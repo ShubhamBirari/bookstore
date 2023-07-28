@@ -5,7 +5,7 @@ const Button = (props) => {
     <>
       <button
         {...props}
-        className={`flex w-full items-center justify-center rounded-md bg-indigo-600 text-base font-medium ${
+        className={`flex items-center justify-center text-black text-base font-medium ${
           props.className
         } ${props.disabled ? 'disabled:opacity-70' : ''}`}
       >

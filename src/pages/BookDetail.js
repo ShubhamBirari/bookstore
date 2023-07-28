@@ -61,7 +61,7 @@ const BookDetail = () => {
                     ? navigate('/checkout')
                     : dispatch(addToCart(selected))
                 }}
-                className="text-white mt-10 flex border border-transparent px-8 py-3  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="text-white w-full mt-10 flex border border-transparent px-8 py-3 bg-indigo-600   hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               />
             </div>
           </div>

@@ -66,8 +66,8 @@ const Checkout = () => {
         </nav>
 
         <div className="flex pt-16">
-          <div className="w-3/5">
-            <div className="checkout">
+          <div className="w-3/5  bg-white mr-4">
+            <div className="checkout mx-6 my-6">
               {booksList.map(
                 (item) =>
                   item.isItemInCart && (
