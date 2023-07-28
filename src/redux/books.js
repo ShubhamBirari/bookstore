@@ -6,19 +6,7 @@ export const booksSlice = createSlice({
   initialState: {
     booksList: booksList,
     loader: true,
-    isModalOpen: false,
-    params: {
-      offset: 0,
-      limit: 9,
-      status: '',
-      mission: '',
-      type: ''
-    },
-    totalPages: 0,
-    selected: null,
-    filters: {
-      edp: ''
-    }
+    selected: null
   },
   reducers: {
     selectItem: (state, action) => {
@@ -35,18 +23,6 @@ export const booksSlice = createSlice({
     },
     setLoader: (state, action) => {
       state.loader = action.payload
-    },
-    toggleModal: (state, action) => {
-      state.isModalOpen = action.payload
-    },
-    setPageNo: (state, action) => {
-      state.params = { ...state.params, pageNo: action.payload }
-    },
-    setPageSize: (state, action) => {
-      state.params = { ...state.params, pageSize: action.payload }
-    },
-    setParam: (state, action) => {
-      state.params = { ...state.params, ...action.payload }
     }
   },
   extraReducers: (builder) => {
@@ -57,3 +33,5 @@ export const booksSlice = createSlice({
     // })
   }
 })
+
+export const { setLoader, selectItem } = booksSlice.actions

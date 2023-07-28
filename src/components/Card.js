@@ -1,14 +1,26 @@
 import React from 'react'
 import '../index.css'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { selectItem } from '../redux/books'
 
 const Card = ({ item }) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   return (
-    <div className="book-card rounded px-12 py-4">
+    <div
+      className="book-card rounded px-12 py-4"
+      onClick={() => {
+        navigate('/detail')
+        dispatch(selectItem(item))
+      }}
+    >
       <div className="w-full lg:h-72">
         <img
           src={item?.url}
           alt={item?.name}
-          className="h-full w-full object-cover lg:h-full lg:w-full"
+          className="h-full w-full lg:h-full lg:w-full"
         />
       </div>
       <div className="mt-4 text-left">
