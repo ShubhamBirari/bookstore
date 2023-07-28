@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, selectItem } from '../redux/books'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
+import Detail from '../components/Detail'
+import Discount from '../components/Discount'
 
 const BookDetail = () => {
   const { selected } = useSelector((state) => state.reducer)
@@ -75,32 +77,31 @@ const BookDetail = () => {
               </div>
 
               {/* Options */}
-              <div className="mt-4 lg:row-span-3 lg:mt-0 pt-4">
+              <div className="mt-4 flex items-baseline lg:row-span-3 lg:mt-0 pt-4">
                 <h2 className="sr-only">book? information</h2>
-                <p className="text-3xl tracking-tight text-gray-900">
+                <p className="text-3xl tracking-tight text-gray-900 mr-4">
+                  {book?.currency}
                   {book?.current_price}
                 </p>
+                <span className="text-gray-500 mr-2 line-through text-lg">
+                  {book?.currency}
+                  {book?.original_price}
+                </span>
+                <Discount
+                  original={book?.original_price}
+                  current={book?.current_price}
+                  curreny={book?.currency}
+                />
               </div>
 
               <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pb-16 lg:pt-6">
                 {/* Description and details */}
-                <div>
-                  <h3 className="sr-only">Description</h3>
-
-                  <div className="space-y-6">
-                    <p className="text-base text-gray-900">
-                      {book?.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-10">
-                  <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-                  <div className="mt-4 space-y-6">
-                    <p className="text-sm text-gray-600">{book?.details}</p>
-                  </div>
-                </div>
+                <Detail label="Author" text={book?.author} />
+                <Detail label="Language" text={book?.highlights?.language} />
+                <Detail label="Binding" text={book?.highlights?.binding} />
+                <Detail label="Publisher" text={book?.highlights?.publisher} />
+                <Detail label="Edition" text={book?.highlights?.edition} />
+                <Detail label="Pages" text={book?.highlights?.pages} />
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import Button from './Button'
 import { useDispatch } from 'react-redux'
 import { decreaseQuantity, increaseQuantity, removeItem } from '../redux/books'
+import Discount from './Discount'
 
 const CheckoutCard = ({ item }) => {
   const dispatch = useDispatch()
@@ -37,6 +38,10 @@ const CheckoutCard = ({ item }) => {
                 {item?.currency}
                 {item?.current_price}
               </span>
+              <Discount
+                original={item?.original_price}
+                current={item?.current_price}
+              />
             </p>
           </div>
         </div>
