@@ -23,6 +23,42 @@ export const booksSlice = createSlice({
     },
     setLoader: (state, action) => {
       state.loader = action.payload
+    },
+    addToCart: (state, action) => {
+      
+      if (!action.payload.isItemInCart) {
+        const {booksList} = JSON.parse(JSON.stringify(state))
+        booksList.forEach((item)=>{
+          if(item.id === action.payload.id){
+            item.isItemInCart = true
+            item.quantity = 1
+          }
+        })
+        state.booksList = [...booksList]
+        state.selected = { ...action.payload, isItemInCart: true, quantity: 1 }
+      }
+    },
+    increaseQuantity: (state, action) => {
+      const {booksList} = JSON.parse(JSON.stringify(state))
+
+      booksList.forEach((item) => {
+        if (item.id === action.payload.id && item.quantity < 10) {
+          item.quantity = action.payload.quantity + 1
+        }
+      })
+
+      state.booksList = [...booksList]
+      state.selected =null
+    },
+    decreaseQuantity: (state, action) => {
+      const {booksList} = JSON.parse(JSON.stringify(state))
+      booksList.forEach((item) => {
+        if (item.id === action.payload.id && item.quantity > 0) {
+          item.quantity = action.payload.quantity - 1
+        }
+      })
+      state.booksList = [...booksList]
+      state.selected =null
     }
   },
   extraReducers: (builder) => {
@@ -34,4 +70,10 @@ export const booksSlice = createSlice({
   }
 })
 
-export const { setLoader, selectItem } = booksSlice.actions
+export const {
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  setLoader,
+  selectItem
+} = booksSlice.actions

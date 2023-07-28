@@ -1,6 +1,13 @@
 import React, { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  ShoppingBagIcon
+} from '@heroicons/react/24/outline'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const user = {
   name: 'Tom Cook',
@@ -21,6 +28,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const { booksList } = useSelector((state) => state.reducer)
+  const itemsInCart = booksList.filter((temp) => temp.isItemInCart).length
+  const navigate = useNavigate()
   return (
     <>
       <div className="min-h-full">
@@ -61,14 +71,21 @@ const Navbar = () => {
                     <div className="ml-4 flex items-center md:ml-6">
                       <button
                         type="button"
-                        className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        onClick={() => navigate('/checkout')}
+                        className="rounded-full notification bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                        <ShoppingBagIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
+                        {itemsInCart > 0 && (
+                          <span className="badge">{itemsInCart}</span>
+                        )}
                       </button>
 
                       {/* Profile dropdown */}
-                      <Menu as="div" className="relative ml-3">
+                      {/* <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
@@ -106,7 +123,7 @@ const Navbar = () => {
                             ))}
                           </Menu.Items>
                         </Transition>
-                      </Menu>
+                      </Menu> */}
                     </div>
                   </div>
                   <div className="-mr-2 flex md:hidden">

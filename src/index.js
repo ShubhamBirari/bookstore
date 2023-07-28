@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Suspense } from 'react'
 import Navbar from './components/Navbar'
 const LazyBookDetail = lazy(() => import('./pages/BookDetail'))
+const LazyCheckout = lazy(() => import('./pages/Checkout'))
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/detail" element={<LazyBookDetail />} />
+            <Route path="/checkout" element={<LazyCheckout />} />
           </Routes>
         </Suspense>
       </Provider>
