@@ -1,14 +1,14 @@
 import React from 'react'
 import Button from './Button'
 import { useDispatch } from 'react-redux'
-import { decreaseQuantity, increaseQuantity } from '../redux/books'
+import { decreaseQuantity, increaseQuantity, removeItem } from '../redux/books'
 
 const CheckoutCard = ({ item }) => {
   const dispatch = useDispatch()
   const book = item
   return (
     <>
-      <div className="mb-6 pb-6 border-b	">
+      <div className="mb-6 pb-6 border-b">
         <div className="flex">
           <div className="hidden overflow-hidden rounded lg:block mr-8 text-center">
             <div className="w-full flex justify-center">
@@ -40,23 +40,30 @@ const CheckoutCard = ({ item }) => {
             </p>
           </div>
         </div>
-        <div className="flex">
-          <div className="flex mt-4 items-center">
+        <div className="flex items-center mt-6">
+          <div className="flex items-center mr-10">
             <Button
               label="-"
               disabled={item.quantity == 1}
-              className="text-white rounded-full text-lg w-8 border border-1 border-gray-400"
+              className="rounded-full text-lg w-8 border border-1 border-gray-400"
               onClick={() => dispatch(decreaseQuantity(item))}
             />
             <span className="w-10 flex justify-center">{item.quantity}</span>
             <Button
               label="+"
               disabled={item.quantity == 10}
-              className="text-white rounded-full text-lg w-8 border border-1 border-gray-400"
+              className="rounded-full text-lg w-8 border border-1 border-gray-400"
               onClick={() => dispatch(increaseQuantity(item))}
             />
           </div>
-          <div></div>
+          <div className="flex items-end">
+            <label
+              className="font-medium cursor-pointer"
+              onClick={() => dispatch(removeItem(item))}
+            >
+              REMOVE
+            </label>
+          </div>
         </div>
       </div>
     </>

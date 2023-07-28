@@ -59,6 +59,18 @@ export const booksSlice = createSlice({
       })
       state.booksList = [...booksList]
       state.selected =null
+    },
+    removeItem: (state, action) =>{
+      if (action.payload.isItemInCart) {
+        const {booksList} = JSON.parse(JSON.stringify(state))
+        booksList.forEach((item)=>{
+          if(item.id === action.payload.id){
+            item.isItemInCart = false
+            item.quantity = 0
+          }
+        })
+        state.booksList = [...booksList]
+      }
     }
   },
   extraReducers: (builder) => {
@@ -75,5 +87,6 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   setLoader,
-  selectItem
+  selectItem,
+  removeItem
 } = booksSlice.actions

@@ -55,7 +55,7 @@ const BookDetail = () => {
 
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <Button
-                label={book.isItemInCart ? 'Go to bag' : 'Add to bag'}
+                label={book?.isItemInCart ? 'Go to bag' : 'Add to bag'}
                 onClick={() => {
                   book.isItemInCart
                     ? navigate('/checkout')

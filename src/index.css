@@ -32,3 +32,7 @@ code {
   background: red;
   color: white;
 }
+.label {
+  display: block;
+  width: 250px;
+}

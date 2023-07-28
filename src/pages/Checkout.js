@@ -9,6 +9,7 @@ const Checkout = () => {
   const [price, setPrice] = useState(null)
   const [discount, setDiscount] = useState(null)
   const [total, setTotal] = useState(null)
+  const [currency, setCurrency] = useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -18,17 +19,21 @@ const Checkout = () => {
 
     booksList.forEach((book) => {
       if (book.isItemInCart) {
-        newPrice = newPrice + book.quantity * book.current_price
-        newTotal = newTotal + newPrice
+        newPrice = newPrice + book.quantity * book.original_price
         totalDiscount =
           totalDiscount +
           book.quantity * (book.original_price - book.current_price)
+        newTotal =
+          newTotal +
+          (book.quantity * book.original_price -
+            book.quantity * (book.original_price - book.current_price))
       }
     })
 
     setPrice(newPrice)
     setDiscount(totalDiscount)
     setTotal(newTotal)
+    setCurrency(booksList[0].currency)
   }, [booksList])
 
   return (
@@ -65,7 +70,7 @@ const Checkout = () => {
           </ol>
         </nav>
 
-        <div className="flex pt-16">
+        <div className="flex pt-8">
           <div className="w-3/5  bg-white mr-4">
             <div className="checkout mx-6 my-6">
               {booksList.map(
@@ -76,13 +81,38 @@ const Checkout = () => {
               )}
             </div>
           </div>
-          <div className="w-2/5">
-            <p>
-              Price ( {booksList.filter((temp) => temp.isItemInCart).length}{' '}
-              items ) {price}
-            </p>
-            <p>Discount {discount}</p>
-            <p>Total {total}</p>
+          <div className="w-2/5 bg-white p-8 h-fit	">
+            <div className="">
+              <p className="border-b py-1">PRICE DETAILS</p>
+              <div className="mt-4">
+                <p className="flex justify-between mb-4">
+                  <span className="label">
+                    Price ({' '}
+                    {booksList.filter((temp) => temp.isItemInCart).length} items
+                    ){' '}
+                  </span>
+                  <span>
+                    {currency}
+                    {price}
+                  </span>
+                </p>
+                <p className="flex justify-between mb-4 pb-4 border-b border-dashed">
+                  <span className="label">Discount</span>
+                  <span className="text-lime-600">
+                    - {currency}
+                    {discount}
+                  </span>
+                </p>
+                <p className="flex justify-between font-semibold text-xl">
+                  <span className="label">Total</span>
+                  <span>
+                    {currency}
+                    {total}
+                  </span>
+                </p>
+              </div>
+            </div>
+            <p></p>
           </div>
         </div>
       </div>
