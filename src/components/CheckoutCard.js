@@ -10,7 +10,7 @@ const CheckoutCard = ({ item }) => {
   const book = item
   return (
     <>
-      <div className="mb-6 pb-6 border-b">
+      <div className="mb-6 py-6 sm:pb-6 sm:pt-0 border-b">
         <div className="flex">
           <div className="hidden overflow-hidden rounded lg:block mr-8 text-center">
             <div className="w-full flex justify-center">

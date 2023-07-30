@@ -71,8 +71,8 @@ const Checkout = () => {
           </ol>
         </nav>
 
-        <div className="flex pt-8">
-          <div className="w-3/5  bg-white mr-4">
+        <div className="sm:flex pt-8">
+          <div className="sm:w-3/5  bg-white sm:mr-4">
             <div className="checkout mx-6 my-6">
               {booksList.map(
                 (item) =>
@@ -80,15 +80,15 @@ const Checkout = () => {
                     <CheckoutCard item={item} key={item.id} />
                   )
               )}
-              <div className="w-full flex justify-end mt-0">
+              <div className="hidden sm:w-full sm:flex justify-end mt-0">
                 <Button
                   label="PLACE ORDER"
-                  className={`text-white border border-transparent py-3 bg-lime-600 hover:bg-lime-700 w-3/6`}
+                  className={`text-white border border-transparent rounded py-3 bg-lime-600 hover:bg-lime-700 w-3/6`}
                 />
               </div>
             </div>
           </div>
-          <div className="w-2/5 bg-white p-8 h-fit	">
+          <div className="sm:w-2/5 bg-white p-8 h-fit	">
             <div className="">
               <p className="border-b py-1">PRICE DETAILS</p>
               <div className="mt-4">
@@ -122,6 +122,12 @@ const Checkout = () => {
                   {discount} on this order
                 </p>
               </div>
+            </div>
+            <div className="w-full flex justify-end mt-4 sm:hidden">
+              <Button
+                label="PLACE ORDER"
+                className={`text-white border border-transparent py-2 rounded bg-lime-600 hover:bg-lime-700 w-full`}
+              />
             </div>
           </div>
         </div>
