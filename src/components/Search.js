@@ -9,7 +9,7 @@ const Search = ({ search }) => {
   return (
     <input
       placeholder="Search"
-      className="p-1 rounded px-4"
+      className="p-1 rounded px-4 mr-4"
       value={search ?? ''}
       onChange={(e) => dispatch(setSearch(e.target.value))}
     />

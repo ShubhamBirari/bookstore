@@ -18,16 +18,12 @@ const Card = ({ item }) => {
         dispatch(selectItem(item))
       }}
     >
-      <div className="w-full lg:h-64">
-        <Image
-          src={item?.url}
-          alt={item?.name}
-          className="h-full w-full lg:h-full lg:w-full"
-        />
+      <div className="w-full lg:h-64 sm:h-64 h-32">
+        <Image src={item?.url} alt={item?.name} className="h-full sm:w-full" />
       </div>
-      <div className="mt-4 text-left">
+      <div className="mt-5 text-left">
         <div>
-          <h3 className="text-sm text-gray-700 truncate">{item?.name}</h3>
+          <h3 className="text-md text-gray-900 truncate">{item?.name}</h3>
           <p className="mt-1 text-sm text-gray-500 mb-2">{item?.author}</p>
         </div>
         <p className="text-sm ">
@@ -35,7 +31,7 @@ const Card = ({ item }) => {
             {item?.currency}
             {item?.current_price}
           </span>
-          <span className="text-gray-500 font-lg line-through text-sm">
+          <span className="text-gray-400 font-lg line-through text-sm">
             {item?.currency}
             {item?.original_price}
           </span>
