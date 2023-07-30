@@ -12,8 +12,8 @@ The first step is to clone the project in your desktop.
 
 ### 2. Install the dependencies.
 
-Once you have clone the project you can use `npm install` command to install all the dependencies. 
+Once you have cloned the project you can use `npm install` command to install all the dependencies. You can check these dependencies in the node_modules folder that was created after running the given command.
 
 ### 3. Run the project
 
-Using `npm start` you can run the above project.
+Use `npm start` command to run the project. This will open up a window in your default browser. Voilà! you just successful ran the project.
