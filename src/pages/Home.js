@@ -9,25 +9,23 @@ import NoResultFound from './NoResultFound'
 function Home() {
   const { booksList, search, pageNo } = useSelector((state) => state.reducer)
   const [list, setList] = useState([])
+  const [pageCount, setCount] = useState(0)
   const dispatch = useDispatch()
 
-  const pageCount = Math.ceil(list.length / 8)
-
   useEffect(() => {
-    setList(
-      booksList
-        .filter((temp) => {
-          if (search) {
-            return (
-              temp?.name?.toLowerCase().includes(search.toLowerCase()) ||
-              temp?.author?.toLowerCase().includes(search.toLowerCase())
-            )
-          } else {
-            return temp
-          }
-        })
-        ?.slice(pageNo * 8, (pageNo + 1) * 8)
-    )
+    const arr = booksList.filter((temp) => {
+      if (search) {
+        return (
+          temp?.name?.toLowerCase().includes(search.toLowerCase()) ||
+          temp?.author?.toLowerCase().includes(search.toLowerCase())
+        )
+      } else {
+        return temp
+      }
+    })
+
+    setList(arr?.slice(pageNo * 8, (pageNo + 1) * 8))
+    setCount(Math.ceil(arr.length / 8))
   }, [pageNo, search])
 
   return (
