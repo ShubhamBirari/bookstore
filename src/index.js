@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Suspense } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Loader from './components/Loader'
 const LazyBookDetail = lazy(() => import('./pages/BookDetail'))
 const LazyCheckout = lazy(() => import('./pages/Checkout'))
 
@@ -16,8 +17,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Navbar />
+        <Navbar />
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/detail" element={<LazyBookDetail />} />
