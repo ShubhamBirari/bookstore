@@ -18,7 +18,7 @@ const Card = ({ item }) => {
         dispatch(selectItem(item))
       }}
     >
-      <div className="w-full lg:h-64 sm:h-64 h-32">
+      <div className="w-full flex justify-center lg:h-64 sm:h-64 h-32">
         <Image src={item?.url} alt={item?.name} className="h-full sm:w-full" />
       </div>
       <div className="mt-5 text-left">
