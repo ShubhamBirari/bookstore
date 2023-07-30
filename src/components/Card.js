@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { selectItem } from '../redux/books'
 import Discount from './Discount'
+import Image from './Image'
 
 const Card = ({ item }) => {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Card = ({ item }) => {
       }}
     >
       <div className="w-full lg:h-64">
-        <img
+        <Image
           src={item?.url}
           alt={item?.name}
           className="h-full w-full lg:h-full lg:w-full"

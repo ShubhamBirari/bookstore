@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import Detail from '../components/Detail'
 import Discount from '../components/Discount'
+import Image from '../components/Image'
 
 const BookDetail = () => {
   const { selected } = useSelector((state) => state.reducer)
@@ -48,7 +49,7 @@ const BookDetail = () => {
           <div className="pt-16 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
             {/* Image gallery */}
             <div className="flex justify-center rounded-lg lg:block h-96 ">
-              <img
+              <Image
                 src={book?.url}
                 alt="url"
                 className="h-full object-center w-72"
@@ -57,13 +58,17 @@ const BookDetail = () => {
 
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <Button
-                label={book?.isItemInCart ? 'Go to bag' : 'Add to bag'}
+                label={book?.isItemInCart ? 'Go to cart' : 'Add to cart'}
                 onClick={() => {
                   book.isItemInCart
                     ? navigate('/checkout')
                     : dispatch(addToCart(selected))
                 }}
-                className="text-white w-full mt-10 flex border border-transparent px-8 py-3 bg-indigo-600   hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className={`text-white w-full mt-10 flex border border-transparent px-8 py-3 ${
+                  book?.isItemInCart
+                    ? 'bg-lime-600 hover:bg-lime-700 focus:ring-lime-500'
+                    : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
+                }    focus:outline-none focus:ring-2  focus:ring-offset-2`}
               />
             </div>
           </div>

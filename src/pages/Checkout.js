@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectItem } from '../redux/books'
 import CheckoutCard from '../components/CheckoutCard'
+import Button from '../components/Button'
 
 const Checkout = () => {
   const { booksList } = useSelector((state) => state.reducer)
@@ -79,6 +80,12 @@ const Checkout = () => {
                     <CheckoutCard item={item} key={item.id} />
                   )
               )}
+              <div className="w-full flex justify-end mt-0">
+                <Button
+                  label="PLACE ORDER"
+                  className={`text-white border border-transparent py-3 bg-lime-600 hover:bg-lime-700 w-3/6`}
+                />
+              </div>
             </div>
           </div>
           <div className="w-2/5 bg-white p-8 h-fit	">
@@ -103,16 +110,19 @@ const Checkout = () => {
                     {discount}
                   </span>
                 </p>
-                <p className="flex justify-between font-semibold text-xl">
+                <p className="flex justify-between font-semibold text-xl pb-4 border-b border-dashed">
                   <span className="label">Total</span>
                   <span>
                     {currency}
                     {total}
                   </span>
                 </p>
+                <p className="text-lime-600 mt-4 font-medium">
+                  You will save {currency}
+                  {discount} on this order
+                </p>
               </div>
             </div>
-            <p></p>
           </div>
         </div>
       </div>

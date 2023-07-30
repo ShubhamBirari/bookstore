@@ -3,6 +3,7 @@ import Button from './Button'
 import { useDispatch } from 'react-redux'
 import { decreaseQuantity, increaseQuantity, removeItem } from '../redux/books'
 import Discount from './Discount'
+import Image from './Image'
 
 const CheckoutCard = ({ item }) => {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const CheckoutCard = ({ item }) => {
         <div className="flex">
           <div className="hidden overflow-hidden rounded lg:block mr-8 text-center">
             <div className="w-full flex justify-center">
-              <img
+              <Image
                 src={book?.url}
                 loading="lazy"
                 alt="url"

@@ -6,7 +6,9 @@ export const booksSlice = createSlice({
   initialState: {
     booksList: booksList,
     loader: true,
-    selected: null
+    selected: null,
+    search: null,
+    pageNo: 0
   },
   reducers: {
     selectItem: (state, action) => {
@@ -24,12 +26,18 @@ export const booksSlice = createSlice({
     setLoader: (state, action) => {
       state.loader = action.payload
     },
+    setSearch: (state, action) => {
+      state.search = action.payload
+      state.pageNo = 0
+    },
+    setPageNo: (state, action) => {
+      state.pageNo = action.payload
+    },
     addToCart: (state, action) => {
-      
       if (!action.payload.isItemInCart) {
-        const {booksList} = JSON.parse(JSON.stringify(state))
-        booksList.forEach((item)=>{
-          if(item.id === action.payload.id){
+        const { booksList } = JSON.parse(JSON.stringify(state))
+        booksList.forEach((item) => {
+          if (item.id === action.payload.id) {
             item.isItemInCart = true
             item.quantity = 1
           }
@@ -39,7 +47,7 @@ export const booksSlice = createSlice({
       }
     },
     increaseQuantity: (state, action) => {
-      const {booksList} = JSON.parse(JSON.stringify(state))
+      const { booksList } = JSON.parse(JSON.stringify(state))
 
       booksList.forEach((item) => {
         if (item.id === action.payload.id && item.quantity < 10) {
@@ -48,23 +56,23 @@ export const booksSlice = createSlice({
       })
 
       state.booksList = [...booksList]
-      state.selected =null
+      state.selected = null
     },
     decreaseQuantity: (state, action) => {
-      const {booksList} = JSON.parse(JSON.stringify(state))
+      const { booksList } = JSON.parse(JSON.stringify(state))
       booksList.forEach((item) => {
         if (item.id === action.payload.id && item.quantity > 0) {
           item.quantity = action.payload.quantity - 1
         }
       })
       state.booksList = [...booksList]
-      state.selected =null
+      state.selected = null
     },
-    removeItem: (state, action) =>{
+    removeItem: (state, action) => {
       if (action.payload.isItemInCart) {
-        const {booksList} = JSON.parse(JSON.stringify(state))
-        booksList.forEach((item)=>{
-          if(item.id === action.payload.id){
+        const { booksList } = JSON.parse(JSON.stringify(state))
+        booksList.forEach((item) => {
+          if (item.id === action.payload.id) {
             item.isItemInCart = false
             item.quantity = 0
           }
@@ -88,5 +96,7 @@ export const {
   decreaseQuantity,
   setLoader,
   selectItem,
-  removeItem
+  removeItem,
+  setSearch,
+  setPageNo
 } = booksSlice.actions
