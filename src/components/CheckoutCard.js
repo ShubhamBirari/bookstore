@@ -51,14 +51,14 @@ const CheckoutCard = ({ item }) => {
           <div className="flex items-center mr-10">
             <Button
               label="-"
-              disabled={item.quantity == 1}
+              disabled={item.quantity === 1}
               className="rounded-full text-lg w-8 border border-1 border-gray-400"
               onClick={() => dispatch(decreaseQuantity(item))}
             />
             <span className="w-10 flex justify-center">{item.quantity}</span>
             <Button
               label="+"
-              disabled={item.quantity == 10}
+              disabled={item.quantity === 10}
               className="rounded-full text-lg w-8 border border-1 border-gray-400"
               onClick={() => dispatch(increaseQuantity(item))}
             />

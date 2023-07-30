@@ -16,7 +16,7 @@ const BookDetail = () => {
     <>
       <div className="bg-white h-full mx-auto max-w-2xl space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="pt-6 flex items-center-4">
+          <ol className="pt-6 flex items-center-4">
             <li>
               <div className="flex items-center">
                 <Link

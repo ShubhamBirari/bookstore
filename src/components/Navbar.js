@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,12 +6,6 @@ import Search from './Search'
 import Image from './Image'
 import { setSearch } from '../redux/books'
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-}
 const navigation = [{ name: 'Home', href: '/' }]
 
 function classNames(...classes) {
