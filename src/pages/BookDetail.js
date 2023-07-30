@@ -13,7 +13,7 @@ const BookDetail = () => {
   const book = selected
   return (
     <>
-      <div className="bg-white mx-auto max-w-2xl space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="bg-white h-full mx-auto max-w-2xl space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <nav aria-label="Breadcrumb">
           <ol role="list" className="pt-6 flex items-center-4">
             <li>
@@ -44,14 +44,14 @@ const BookDetail = () => {
             </li>
           </ol>
         </nav>
-        <div className="flex">
+        <div className="md:flex lg:flex xl:flex">
           <div className="pt-16 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
             {/* Image gallery */}
-            <div className="hidden overflow-hidden rounded-lg lg:block h-96 w-72">
+            <div className="flex justify-center rounded-lg lg:block h-96 ">
               <img
                 src={book?.url}
                 alt="url"
-                className="h-full w-full object-center"
+                className="h-full object-center w-72"
               />
             </div>
 
@@ -91,6 +91,7 @@ const BookDetail = () => {
                   original={book?.original_price}
                   current={book?.current_price}
                   curreny={book?.currency}
+                  className="font-medium text-lg "
                 />
               </div>
 

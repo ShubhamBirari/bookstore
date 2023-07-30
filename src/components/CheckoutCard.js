@@ -41,6 +41,7 @@ const CheckoutCard = ({ item }) => {
               <Discount
                 original={item?.original_price}
                 current={item?.current_price}
+                className="font-medium text-lg "
               />
             </p>
           </div>

@@ -32,6 +32,9 @@ code {
   background: red;
   color: white;
 }
+#root {
+  min-height: 100vh;
+}
 .label {
   display: block;
   width: 250px;
