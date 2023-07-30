@@ -80,13 +80,6 @@ export const booksSlice = createSlice({
         state.booksList = [...booksList]
       }
     }
-  },
-  extraReducers: (builder) => {
-    // builder.addCase(getAllCapsules.fulfilled, (state, action) => {
-    //   state.allCapsules = action?.payload?.allCapsules
-    //   state.totalPages = action?.payload?.totalPages
-    //   state.loader = false
-    // })
   }
 })
 
